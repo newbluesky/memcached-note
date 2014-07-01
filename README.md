@@ -1,0 +1,4 @@
+memcached-note
+==============
+
+memcache note
