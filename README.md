@@ -6,44 +6,34 @@
 Base On v1.4.20(2014-5-11)
 
 
-=============================================================
 华丽的分割线
 =============================================================
 # Memcached
 
-## Dependencies
+## 依赖关系
 
 * libevent, http://www.monkey.org/~provos/libevent/ (libevent-dev)
 
-## Environment
+## 环境
 
 ### Linux
 
-If using Linux, you need a kernel with epoll.  Sure, libevent will
-work with normal select, but it sucks.
+如果使用Linux，需要支持epoll的内核, libevent 在select下也可以运行，但很差。
 
-epoll isn't in Linux 2.4, but there's a backport at:
+Linux 2.4不支持epoll， 但可以通过反向移植实现
 
     http://www.xmailserver.org/linux-patches/nio-improve.html
-
-You want the epoll-lt patch (level-triggered).
+需要epoll-lt patch (level-triggered).
 
 ### Mac OS X
 
-If you're using MacOS, you'll want libevent 1.1 or higher to deal with
-a kqueue bug.
+如果使用MacOS, 需要libevent 1.1 或更高版本来回避 kqueue BUG
 
 Also, be warned that the -k (mlockall) option to memcached might be
 dangerous when using a large cache.  Just make sure the memcached machines
 don't swap.  memcached does non-blocking network I/O, but not disk.  (it
 should never go to disk, or you've lost the whole point of it)
 
-## Website
+## 网站
 
 * http://www.memcached.org
-
-## Contributing
-
-Want to contribute?  Up-to-date pointers should be at:
-
-* http://contributing.appspot.com/memcached
